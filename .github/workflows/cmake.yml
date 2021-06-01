@@ -11,6 +11,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
+
 jobs:
   build:
     # The CMake configure and build commands are platform agnostic and should work equally
@@ -32,19 +33,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Install CUDA
-      env:
-        cuda: ${{ matrix.cuda }}
-      run: _action/install_cuda.sh
-      shell: bash
+    - uses: ./.github/
+#     - name: Install CUDA
+#       env:
+#         cuda: ${{ matrix.cuda }}
+#       run: _action/install_cuda.sh
+#       shell: bash
     
-    # Host compilers
-    - name: Install gcc and g++
-      run: |
-        sudo apt install -y gcc-${{ matrix.gcc_version }} g++-${{ matrix.gcc_version }}
-        echo "CC=/usr/bin/gcc-${{ matrix.gcc_version }}" >> $GITHUB_ENV
-        echo "CXX=/usr/bin/g++-${{ matrix.gcc_version }}" >> $GITHUB_ENV
-        echo "CUDA_HOST_CXX=/usr/bin/g++-${{ matrix.gcc_version }}" >> $GITHUB_ENV
+#     # Host compilers
+#     - name: Install gcc and g++
+#       run: |
+#         sudo apt install -y gcc-${{ matrix.gcc_version }} g++-${{ matrix.gcc_version }}
+#         echo "CC=/usr/bin/gcc-${{ matrix.gcc_version }}" >> $GITHUB_ENV
+#         echo "CXX=/usr/bin/g++-${{ matrix.gcc_version }}" >> $GITHUB_ENV
+#         echo "CUDA_HOST_CXX=/usr/bin/g++-${{ matrix.gcc_version }}" >> $GITHUB_ENV
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
