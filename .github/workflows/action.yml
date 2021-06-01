@@ -1,0 +1,8 @@
+name: 'DockerTest'
+description: 'Test code with various os'
+
+# Docs:
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-docker-actions
+runs:
+  using: 'docker'
+  image: 'docker/ubuntu-18.04.Dockerfile'
