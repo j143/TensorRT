@@ -1,0 +1,18 @@
+name: 'DockerTest'
+description: 'Test code with various os'
+
+# `inputs`
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs
+inputs:
+  dockerOSConfig:
+    description: 'OS configuration'
+    required: true
+    default: 'ubuntu-18.04'
+
+# Docs:
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-docker-actions
+runs:
+  using: 'docker'
+  image: 'docker/${{ inputs.dockerOSConfig }}.Dockerfile'
+
+

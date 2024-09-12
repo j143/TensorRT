@@ -1,0 +1,22 @@
+
+name: test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+#
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name:  Build
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Run tests on dockerfile
+      uses: ./.github/
